@@ -22,6 +22,8 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no root@104.236.101.38 << 'EOF'
           cd /root/Portafolio
+          
+          git pull origin main
 
           # Crear archivo .env con la SECRET_KEY del repositorio
           echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" > .env
