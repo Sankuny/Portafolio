@@ -1,0 +1,39 @@
+# 🐍 Archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# 🌐 Entorno virtual
+venv/
+env/
+.venv/
+ENV/
+
+# 📦 Archivos de dependencias de VSCode o PyCharm
+.vscode/
+.idea/
+
+# 🧪 Archivos de testing o cobertura
+coverage/
+*.cover
+.hypothesis/
+
+# 📂 Archivos temporales y logs
+*.log
+*.sqlite3
+*.db
+.DS_Store
+Thumbs.db
+
+# 🛡 Archivos sensibles
+.env
+
+# 🚀 Compilados o cache de frontend (si usas React/Vue en el futuro)
+node_modules/
+dist/
+build/
+
+# 🧪 pytest
+.pytest_cache/

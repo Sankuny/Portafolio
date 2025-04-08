@@ -1,28 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Bienvenido a mi Portafolio</h1>
-        <nav>
-            <a href="/">Inicio</a>
-            <a href="/about">Acerca de</a>
-            <a href="/contact">Contacto</a>
-        </nav>
-    </header>
-    
-    <section>
-        <h2>Mis Proyectos</h2>
-        <!-- Lista de mis preyectos -->
-    </section>
+{% extends 'base.html' %}
 
-    <footer>
-        <p>&copy; 2025 Angel | Todos los derechos reservados</p>
-    </footer>
-</body>
-</html>
+{% block title %}Inicio | Mi Portafolio{% endblock %}
+
+{% block content %}
+<section class="projects">
+    <h2>Mis Proyectos</h2>
+    <div class="project-list">
+        <article class="project">
+            <h3>Proyecto 1</h3>
+            <p>Descripción breve del proyecto.</p>
+        </article>
+        <article class="project">
+            <h3>Proyecto 2</h3>
+            <p>Descripción breve del proyecto.</p>
+        </article>
+    </div>
+</section>
+{% endblock %}

@@ -22,8 +22,17 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no root@104.236.101.38 << 'EOF'
           cd /root/Portafolio
-          git pull origin main
+
+          # Crear archivo .env con la SECRET_KEY del repositorio
+          echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" > .env
+          echo "DEBUG=${{ secrets.DEBUG }}" >> .env
+
+          # Activar entorno virtual
           source venv/bin/activate
+
+          # Instalar/actualizar dependencias
           pip install -r requirements.txt
+
+          # Reiniciar gunicorn para aplicar cambios
           systemctl restart gunicorn
         EOF
