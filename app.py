@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 from werkzeug.security import check_password_hash
+from datetime import timedelta
 
 
 # ─────────────────────────────────────────────────────────────
@@ -17,6 +18,7 @@ ADMIN_PASS_HASH = os.getenv("ADMIN_PASS_HASH")
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 app.debug = os.getenv("DEBUG", "False") == "True"
+app.permanent_session_lifetime = timedelta(minutes=30)
 
 # ─────────────────────────────────────────────────────────────
 # 💾 Configuración de SQLite + SQLAlchemy
@@ -68,6 +70,7 @@ def login():
         password = request.form.get("password")
 
         if username == ADMIN_USER and check_password_hash(ADMIN_PASS_HASH, password):
+            session.permanent = True
             session["logged_in"] = True
             flash("Has iniciado sesión correctamente.")
             return redirect("/admin/mensajes")
