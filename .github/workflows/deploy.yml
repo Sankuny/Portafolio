@@ -20,7 +20,7 @@ jobs:
 
     - name: Ejecutar deploy en el servidor
       run: |
-        ssh -o StrictHostKeyChecking=no root@104.236.101.38 << 'EOF'
+        ssh -o StrictHostKeyChecking=no root@104.236.101.38 << EOF
           cd /root/Portafolio
           
           git pull origin main
@@ -30,6 +30,14 @@ jobs:
           echo "DEBUG=${{ secrets.DEBUG }}" >> .env
           echo "ADMIN_USER=${{ secrets.ADMIN_USER }}" >> .env
           echo "ADMIN_PASS_HASH=${{ secrets.ADMIN_PASS_HASH }}" >> .env
+
+          # Establecer permisos para el archivo .env
+          chmod 600 .env
+
+          # Crear entorno virtual si no existe
+          if [ ! -d "venv" ]; then
+            python3 -m venv venv
+          fi
 
           # Activar entorno virtual
           source venv/bin/activate
