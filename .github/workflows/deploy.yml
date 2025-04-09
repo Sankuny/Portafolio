@@ -29,7 +29,11 @@ jobs:
           echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" > .env
           echo "DEBUG=${{ secrets.DEBUG }}" >> .env
           echo "ADMIN_USER=${{ secrets.ADMIN_USER }}" >> .env
-          printf "ADMIN_PASS_HASH=%s\n" "${{ secrets.ADMIN_PASS_HASH }}" >> .env
+          echo "${{ secrets.ADMIN_PASS_HASH_B64 }}" | base64 -d >> .env.tmp
+          echo -n "ADMIN_PASS_HASH=" > .env
+          cat .env.tmp >> .env
+          rm .env.tmp
+
 
           # Establecer permisos para el archivo .env
           chmod 600 .env
