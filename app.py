@@ -35,7 +35,7 @@ class Mensaje(db.Model):
     fecha = db.Column(db.DateTime, default=datetime.utcnow)
 
 # ─────────────────────────────────────────────────────────────
-# 🌐 Rutas públicas
+#  Rutas públicas
 @app.route('/')
 def home():
     return render_template('index.html')
