@@ -25,15 +25,16 @@ jobs:
           
           git pull origin main
 
-          # Crear archivo .env con la SECRET_KEY del repositorio
+          # Crear archivo .env con las variables del repositorio
           echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" > .env
           echo "DEBUG=${{ secrets.DEBUG }}" >> .env
           echo "ADMIN_USER=${{ secrets.ADMIN_USER }}" >> .env
+          
+          # Decodificar y agregar el hash en base64 sin sobrescribir el archivo
           echo "${{ secrets.ADMIN_PASS_HASH_B64 }}" | base64 -d >> .env.tmp
-          echo -n "ADMIN_PASS_HASH=" > .env
+          echo -n "ADMIN_PASS_HASH=" >> .env
           cat .env.tmp >> .env
           rm .env.tmp
-
 
           # Establecer permisos para el archivo .env
           chmod 600 .env
