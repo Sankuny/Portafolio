@@ -26,7 +26,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mensajes.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# 📦 Modelo para mensajes
+#  Modelo para mensajes
 class Mensaje(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100), nullable=False)
