@@ -62,7 +62,7 @@ def contact():
     return render_template("contact.html")
 
 # ─────────────────────────────────────────────────────────────
-# 🔐 Rutas de autenticación
+#  Rutas de autenticación
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
