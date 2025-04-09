@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel de Administración | Mi Portafolio{% endblock %}
+
+{% block content %}
+<section class="admin-section">
+    <h2>Mensajes recibidos</h2>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-message">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if mensajes %}
+        <table class="mensajes-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Mensaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mensaje in mensajes %}
+                <tr>
+                    <td>{{ mensaje.nombre }}</td>
+                    <td>{{ mensaje.correo }}</td>
+                    <td>{{ mensaje.contenido }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay mensajes todavía.</p>
+    {% endif %}
+</section>
+{% endblock %}

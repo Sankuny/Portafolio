@@ -28,6 +28,8 @@ jobs:
           # Crear archivo .env con la SECRET_KEY del repositorio
           echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" > .env
           echo "DEBUG=${{ secrets.DEBUG }}" >> .env
+          echo "ADMIN_USER=${{ secrets.ADMIN_USER }}" >> .env
+          echo "ADMIN_PASS_HASH=${{ secrets.ADMIN_PASS_HASH }}" >> .env
 
           # Activar entorno virtual
           source venv/bin/activate
